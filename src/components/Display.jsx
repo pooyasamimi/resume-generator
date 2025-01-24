@@ -27,6 +27,7 @@ const Display = forwardRef(function Display(_, ref) {
             }
             onClick={(e) => e.target.select()}
             spellCheck={false}
+            maxLength={25}
           />
         </CardDescription>
       </CardHeader>

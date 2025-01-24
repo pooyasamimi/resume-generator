@@ -50,6 +50,7 @@ export default function Form({ onSaveImage }) {
                 onChange={inputHandler}
                 onClick={(e) => e.target.select()}
                 spellCheck={false}
+                maxLength={25}
               />
             </div>
             <div className="flex flex-col space-y-2">

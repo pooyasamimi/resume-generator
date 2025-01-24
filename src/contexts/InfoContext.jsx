@@ -5,7 +5,7 @@ import InfoContextProvider from './InfoContextProvider';
 
 let initInfo = {
     fullName: 'Pooya Samimi',
-    skills: 'Git React TypeScript',
+    skills: 'React TypeScript Git shadcn/ui',
     avatarUrl: null,
     fileName: 'File Name',
     registerDate: 0
