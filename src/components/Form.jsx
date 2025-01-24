@@ -20,7 +20,7 @@ export default function Form({ onSaveImage }) {
   function inputHandler({ target }) {
     setInfo({
       ...info,
-      [target.id == "name" ? "fullName" : "skills"]: target.value,
+      [target.id == "name" ? "fullName" : "skills"]: target.value.trim(),
     });
   }
   function avatarHandler({ target }) {
