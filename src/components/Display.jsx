@@ -20,7 +20,7 @@ const Display = forwardRef(function Display(_, ref) {
       <CardHeader>
         <CardDescription className="bg-stone-900 font-medium text-center rounded">
           <Input
-            defaultValue={fileName}
+            value={fileName}
             className="focus-visible:border-none"
             onChange={({ target: { value } }) =>
               setInfo({ ...info, fileName: value.trim() })
@@ -35,12 +35,13 @@ const Display = forwardRef(function Display(_, ref) {
         <Profile url={avatarUrl} fullName={fullName} />
         <div className="">
           <CardTitle>{fullName}</CardTitle>
+          {/* <CardTitle>{fullName||'💕🌶'}</CardTitle> */}
           <CardDescription className="mt-2 mb-4">
             {registerDate ? registerDate + " Days ago." : "Today."}
           </CardDescription>
           <div className="flex gap-2 flex-wrap">
             {skills.split(" ").map((skill) => {
-              if (skill != "") {
+              if (skill.length) {
                 return (
                   <Badge key={skill} variant={"secondary"} className={"pb-1 tracking-wider"}>
                     {skill}

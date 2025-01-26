@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
@@ -15,24 +14,23 @@ import {
 import { useContext } from "react";
 import InfoContextProvider from "@/contexts/InfoContextProvider";
 import { useEffect } from "react";
-import { useRef } from "react";
+import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-export function DatePicker({ id }) {
-  const { info, setInfo } = useContext(InfoContextProvider);
-  const [date, setDate] = useState(new Date());
-
-
+export function DatePicker({ id, date, setDate }) {
+  const { setInfo } = useContext(InfoContextProvider);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  // const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     const registerDate = date
-      ? Math.ceil((new Date() - date) / 1000 / 60 / 60 / 24)-1
+      ? Math.ceil((new Date() - date) / 1000 / 60 / 60 / 24) - 1
       : setDate(new Date());
     setInfo((prevInfo) => ({ ...prevInfo, registerDate }));
-  }, [date, setInfo]);
+  }, [date, setInfo, setDate]);
 
   return (
-    <Popover>
+    <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
       <PopoverTrigger asChild id={id}>
         <Button
           variant={"outline"}
@@ -49,11 +47,15 @@ export function DatePicker({ id }) {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={(e) => {
+            setDate(e);
+            setIsCalendarOpen(false);
+          }}
           disabled={(date) =>
             date > new Date() || date < new Date("1900-01-01")
           }
           initialFocus
+          date={date}
         />
       </PopoverContent>
     </Popover>

@@ -13,14 +13,22 @@ import { Label } from "@/components/ui/label";
 import { DatePicker } from "./ui/DatePicker";
 import { useContext } from "react";
 import InfoContextProvider from "@/contexts/InfoContextProvider";
+import { useRef } from "react";
+import { useState } from "react";
 
 export default function Form({ onSaveImage }) {
+  const fileRef = useRef(null);
+  const fullNameRef = useRef(null);
   const { info, setInfo, initInfo } = useContext(InfoContextProvider);
   const { fullName, skills } = info;
+
+  //نگهداری استیت فرزند در کامپوننت پدر برای راحتی
+  const [date, setDate] = useState(new Date());
+
   function inputHandler({ target }) {
     setInfo({
       ...info,
-      [target.id == "name" ? "fullName" : "skills"]: target.value.trim(),
+      [target.id == "name" ? "fullName" : "skills"]: target.value,
     });
   }
   function avatarHandler({ target }) {
@@ -31,6 +39,16 @@ export default function Form({ onSaveImage }) {
     } else {
       setInfo({ ...info, avatarUrl: null });
     }
+  }
+  function fullNameBlurHandler() {
+    if (!fullName) {
+      setInfo((prev) => ({...prev,fullName:'❄💜'}))
+    }
+  }
+  function resetHandler() {
+    setInfo({ ...initInfo });
+    fileRef.current.value = null;
+    setDate(new Date());
   }
   return (
     <Card className="dark w-1/2 max-w-lg">
@@ -44,10 +62,12 @@ export default function Form({ onSaveImage }) {
             <div className="flex flex-col space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input
+              ref={fullNameRef}
                 id="name"
                 placeholder="Enter your full name"
-                defaultValue={fullName}
-                onChange={inputHandler}
+                onInput={inputHandler}
+                onBlur={fullNameBlurHandler}
+                value={fullName}
                 onClick={(e) => e.target.select()}
                 spellCheck={false}
                 maxLength={25}
@@ -58,14 +78,16 @@ export default function Form({ onSaveImage }) {
               <Input
                 id="skills"
                 placeholder="Put your skills with space"
-                defaultValue={skills}
-                onChange={inputHandler}
+                value={skills}
+                onInput={inputHandler}
+                onClick={(e) => e.target.select()}
                 spellCheck={false}
               />
             </div>
             <div className="flex flex-col space-y-2">
               <Label htmlFor="avatar">Avatar</Label>
               <Input
+                ref={fileRef}
                 id="avatar"
                 type="file"
                 accept=".jpg , .jpeg , .png"
@@ -74,13 +96,13 @@ export default function Form({ onSaveImage }) {
             </div>
             <div className="flex flex-col space-y-2">
               <Label htmlFor="register-data">Register Date</Label>
-              <DatePicker id="register-data" />
+              <DatePicker id="register-data" date={date} setDate={setDate} />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={() => setInfo({ ...initInfo })}>
+        <Button variant="outline" onClick={resetHandler}>
           Reset
         </Button>
         <Button onClick={onSaveImage}>Export</Button>
