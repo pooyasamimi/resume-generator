@@ -35,7 +35,6 @@ const Display = forwardRef(function Display(_, ref) {
         <Profile url={avatarUrl} fullName={fullName} />
         <div className="">
           <CardTitle>{fullName}</CardTitle>
-          {/* <CardTitle>{fullName||'💕🌶'}</CardTitle> */}
           <CardDescription className="mt-2 mb-4">
             {registerDate ? registerDate + " Days ago." : "Today."}
           </CardDescription>
@@ -43,7 +42,11 @@ const Display = forwardRef(function Display(_, ref) {
             {skills.split(" ").map((skill) => {
               if (skill.length) {
                 return (
-                  <Badge key={skill} variant={"secondary"} className={"pb-1 tracking-wider"}>
+                  <Badge
+                    key={skill}
+                    variant={"secondary"}
+                    className={"pb-1 tracking-wider"}
+                  >
                     {skill}
                   </Badge>
                 );

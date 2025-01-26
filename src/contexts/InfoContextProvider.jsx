@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
-const InfoContextProvider = createContext()
-export default InfoContextProvider
+const InfoContextProvider = createContext();
+export default InfoContextProvider;

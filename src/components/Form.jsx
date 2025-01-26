@@ -42,7 +42,7 @@ export default function Form({ onSaveImage }) {
   }
   function fullNameBlurHandler() {
     if (!fullName) {
-      setInfo((prev) => ({...prev,fullName:'❄💜'}))
+      setInfo((prev) => ({ ...prev, fullName: "💜🍒" }));
     }
   }
   function resetHandler() {
@@ -62,7 +62,7 @@ export default function Form({ onSaveImage }) {
             <div className="flex flex-col space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input
-              ref={fullNameRef}
+                ref={fullNameRef}
                 id="name"
                 placeholder="Enter your full name"
                 onInput={inputHandler}
