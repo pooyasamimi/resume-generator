@@ -31,14 +31,14 @@ const Display = forwardRef(function Display(_, ref) {
           />
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center items-center gap-3">
+      <CardContent className="flex-col flex md:flex-row justify-center items-center gap-3">
         <Profile url={avatarUrl} fullName={fullName} />
-        <div className="">
+        <div className="text-center md:text-left">
           <CardTitle>{fullName}</CardTitle>
           <CardDescription className="mt-2 mb-4">
             {registerDate ? registerDate + " Days ago." : "Today."}
           </CardDescription>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex justify-center md:justify-normal gap-2 flex-wrap">
             {skills.split(" ").map((skill) => {
               if (skill.length) {
                 return (

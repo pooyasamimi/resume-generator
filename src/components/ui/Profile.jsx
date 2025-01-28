@@ -10,7 +10,7 @@ export function Profile({ url, fullName }) {
           if (word) {
             if (emojiRegex.test(word)) {
               return [...word][0];
-            } else return word[0]?.toUpperCase();
+            } else return [...word][0]?.toUpperCase();
           } else return "";
         })
       : [];

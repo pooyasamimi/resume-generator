@@ -53,7 +53,7 @@ export default function Form({ onSaveImage }) {
   return (
     <Card className="dark w-1/2 max-w-lg">
       <CardHeader>
-        <CardTitle>Resume Creator</CardTitle>
+        <CardTitle>Resume Generator</CardTitle>
         <CardDescription>Export your snap-shot in one-click.</CardDescription>
       </CardHeader>
       <CardContent>
