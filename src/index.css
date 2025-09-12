@@ -60,6 +60,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-stone-200 bg-stone-950;
   }
 }

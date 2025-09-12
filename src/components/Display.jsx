@@ -16,7 +16,7 @@ const Display = forwardRef(function Display(_, ref) {
   const { info, setInfo } = useContext(InfoContextProvider);
   const { fullName, avatarUrl, registerDate, fileName, skills } = info;
   return (
-    <Card className="dark w-1/3" ref={ref}>
+    <Card className="dark w-5/6 sm:w-1/3" ref={ref}>
       <CardHeader>
         <CardDescription className="bg-stone-900 font-medium text-center rounded">
           <Input

@@ -51,7 +51,7 @@ export default function Form({ onSaveImage }) {
     setDate(new Date());
   }
   return (
-    <Card className="dark w-1/2 max-w-lg">
+    <Card className="dark w-5/6 sm:w-1/2 sm:max-w-lg">
       <CardHeader>
         <CardTitle>Resume Generator</CardTitle>
         <CardDescription>Export your snap-shot in one-click.</CardDescription>

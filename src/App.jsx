@@ -72,7 +72,7 @@ function App() {
         theme="dark"
         transition={Bounce}
       />
-      <main className="flex justify-center items-center h-screen gap-4 text-stone-200 bg-stone-950">
+      <main className="flex flex-col my-8 sm:my-0 sm:flex-row justify-center items-center h-screen gap-4 text-stone-200 bg-stone-950">
         <Form onSaveImage={saveImageHandler} />
         <Display ref={ref} />
       </main>
