@@ -81,12 +81,3 @@ function App() {
 }
 
 export default App;
-{
-  /* <motion.div
-animate={{ opacity: 1 }}
-initial={{ opacity: 0 }}
-transition={{ duration: 1 }}
->
-سلام دنیا!
-</motion.div> */
-}
